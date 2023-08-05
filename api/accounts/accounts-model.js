@@ -1,4 +1,4 @@
-const db = require('../data/db-config'); // adjust the path to your actual db config file
+const db = require('../../data/db-config'); // adjust the path to your actual db config file
 
 const getAll = () => {
   return db('accounts'); // returns all records in the 'accounts' table
