@@ -9,9 +9,12 @@ const getById = id => {
 }
 
 const create = async account => {
-  const [id] = await db('accounts').insert(account).returning('id');
+  const [id] = await db('accounts').insert(account);
+  // Add a short delay to ensure the account is written before it's fetched
+  await new Promise(resolve => setTimeout(resolve, 100));
   return getById(id);
 }
+
 
 const updateById = async (id, account) => {
   await db('accounts').where({ id }).update(account);
